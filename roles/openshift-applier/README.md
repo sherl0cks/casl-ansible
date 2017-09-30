@@ -93,6 +93,17 @@ These objects look like this:
 **_NOTE:_** If the target namespace is not defined in each of the objects within the template, be sure to add the `namespace` variable. 
 
 
+Executing a Subset of the Inventory
+------------
+
+When developing an inventory, it can be useful to only apply a subset of the inventory during a single playbook execution. The role current has a "whitelist" feature, which will only apply the `objects` you specify in an environment variable `wl`. It's most practical to set this with the `-e` or `--extra-vars` switch of `ansible-playbook`, so you don't need to modify any source files. The below example will apply only the `projectrequest` and `app-builds` objects in the inventory, skipping any others that exist:
+
+`ansible-playbook -i <inventory> <playbook> -e "wl=projectrequest,app-builds"`
+
+
+
+
+
 Dependencies
 ------------
 - openshift-login: Ansible role used to login a user to the OpenShift cluster.

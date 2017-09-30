@@ -1,0 +1,19 @@
+--- 
+- name: "Convert whitelist to json list from comma deliminited list"
+  set_fact:
+    whitelist: "{{wl.split(',') }}"
+  when:
+  - wl is defined
+  - wl != ""  
+
+- name: "Creat Default Whitelist"
+  set_fact:
+    whitelist: [] 
+  when:
+  - wl is not defined or wl == "" 
+
+- name: "Convert whitelist to json list from comma deliminited list"
+  set_fact:
+    whitelist: "{{ whitelist }} + [ '{{item.object}}' ]"
+  with_items:
+  - "{{openshift_cluster_content}}"
