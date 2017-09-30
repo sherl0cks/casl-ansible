@@ -6,7 +6,7 @@
   - wl is defined
   - wl != ""  
 
-- name: "Creat Default Whitelist"
+- name: "Create Default Whitelist"
   set_fact:
     whitelist: [] 
   when:
