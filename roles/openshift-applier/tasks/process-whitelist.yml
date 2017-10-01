@@ -17,3 +17,5 @@
     whitelist: "{{ whitelist }} + [ '{{item.object}}' ]"
   with_items:
   - "{{openshift_cluster_content}}"
+  when:
+  - wl is not defined or wl == "" 
