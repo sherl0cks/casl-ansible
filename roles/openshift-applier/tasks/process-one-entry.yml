@@ -54,7 +54,7 @@
   - item.namespace is defined
   - item.namespace|trim != ''
 
-- name: "Create OpenShift objects for '{{ entry.object }}' with params"
+- name: "Create OpenShift objects for '{{ item.name }}' with params"
   shell: >
     oc process \
       {{ process_local | default('') }} \
