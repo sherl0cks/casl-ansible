@@ -4,8 +4,8 @@
   with_items:
   - "{{ openshift_cluster_content }}"
   when:
-  - items.content is defined
-  - items.content != ""
+  - item.content is defined
+  - item.content != ""
 
 - name: "Update 'namespace: ' entries with a custom filter"
   set_fact:
