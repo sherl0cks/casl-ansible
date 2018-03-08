@@ -7,6 +7,9 @@
   - item.content is defined
   - item.content != ""
 
+- debug:
+    msg: "{{ openshift_cluster_content.galaxy_requirements }}"
+    
 - name: "Update galaxy requirements file"
   include_tasks: update-galaxy-requirements.yml
   when: 
