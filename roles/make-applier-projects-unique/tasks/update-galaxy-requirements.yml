@@ -1,7 +1,7 @@
 ---
 - name: "Set regexp_replace_pairs for galaxy requirements"
   replace:
-    path: "{{ openshift_cluster_content.galaxy_requirements }}"
+    path: "{{ item.galaxy_requirements }}"
     regexp: "{{ pair.regexp }}"
     replace: "{{ pair.replace }}"
   with_items:

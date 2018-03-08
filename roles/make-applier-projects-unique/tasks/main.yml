@@ -7,14 +7,13 @@
   - item.content is defined
   - item.content != ""
 
-- debug:
-    msg: "{{ openshift_cluster_content.galaxy_requirements }}"
-    
 - name: "Update galaxy requirements file"
   include_tasks: update-galaxy-requirements.yml
+  with_items:
+  - "{{ openshift_cluster_content }}"
   when: 
-  - openshift_cluster_content.galaxy_requirements is defined
-  - openshift_cluster_content.galaxy_requirements != ""
+  - item.galaxy_requirements is defined
+  - item.galaxy_requirements != ""
 
 - name: "Update 'namespace: ' entries with a custom filter"
   set_fact:
