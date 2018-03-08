@@ -7,6 +7,12 @@
   - item.content is defined
   - item.content != ""
 
+- name: "Update galaxy requirements file"
+  include_tasks: update-galaxy-requirements.yml
+  when: 
+  - openshift_cluster_content.galaxy_requirements is defined
+  - openshift_cluster_content.galaxy_requirements != ""
+
 - name: "Update 'namespace: ' entries with a custom filter"
   set_fact:
     openshift_cluster_content: "{{ openshift_cluster_content | update_namespace(project_name_postfix) }}"
